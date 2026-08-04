@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive lessons, Python demonstrations, and short quizzes for the geometry behind computer-aided design.">
+  <meta name="theme-color" content="#071a2f">
+  <title>CAD Geometry Lab | Interactive CAD Mathematics</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" data-site-header>
+    <div class="shell header-inner">
+      <a class="brand" href="#top" aria-label="CAD Geometry Lab home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 42 42">
+            <path d="M7 31C14 9 28 8 35 29" />
+            <path d="M7 31 20 10 35 29" />
+            <circle cx="7" cy="31" r="2.4" />
+            <circle cx="20" cy="10" r="2.4" />
+            <circle cx="35" cy="29" r="2.4" />
+          </svg>
+        </span>
+        <span>
+          <strong>CAD Geometry Lab</strong>
+          <small>Interactive geometry for CAD</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-menu-toggle>
+        <span class="sr-only">Toggle navigation</span>
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="primary-nav" id="primary-navigation" aria-label="Primary navigation" data-primary-nav>
+        <a href="#learning-path">Concepts</a>
+        <a href="#demo-preview">Demos</a>
+        <a href="#quick-quiz">Quizzes</a>
+        <a href="#python-lab">Python</a>
+        <a href="#about">About</a>
+        <a class="nav-cta" href="https://github.com/muralipalla/cad-geometry-lab" data-repository-link>View source</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" id="top">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="shell hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> Interactive CAD mathematics</p>
+          <h1>Learn the geometry behind CAD—<em>by moving it.</em></h1>
+          <p class="hero-lead">Explore points, curves, splines, NURBS, and surfaces through visual lessons, Python-powered demonstrations, and quick knowledge checks.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#demo-preview">Try draggable points <span aria-hidden="true">→</span></a>
+            <a class="button button-secondary" href="#learning-path">Explore the learning path</a>
+          </div>
+          <ul class="technology-list" aria-label="Technologies and features">
+            <li>Python</li>
+            <li>Bokeh</li>
+            <li>Visual mathematics</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual" aria-label="A Bézier curve with its control polygon">
+          <div class="visual-toolbar">
+            <span><i></i><i></i><i></i></span>
+            <code>curve_explorer.py</code>
+            <span class="live-label">Preview</span>
+          </div>
+          <svg viewBox="0 0 640 470" role="img" aria-labelledby="hero-curve-title hero-curve-description">
+            <title id="hero-curve-title">Quadratic Bézier curve</title>
+            <desc id="hero-curve-description">Three control points connected by a polygon shape a smooth cyan curve on a coordinate grid.</desc>
+            <defs>
+              <pattern id="minor-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+                <path d="M32 0H0V32" fill="none" stroke="#23425f" stroke-width="1" />
+              </pattern>
+              <filter id="curve-glow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="5" result="blur" />
+                <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+              </filter>
+            </defs>
+            <rect width="640" height="470" fill="url(#minor-grid)" />
+            <path class="hero-axis" d="M42 390H608M80 36V430" />
+            <path class="hero-control" d="M108 354 328 78 564 332" />
+            <path class="hero-curve-glow" d="M108 354Q328 78 564 332" />
+            <path class="hero-curve" d="M108 354Q328 78 564 332" />
+            <g class="hero-point"><circle cx="108" cy="354" r="9" /><text x="88" y="382">P₀</text></g>
+            <g class="hero-point point-two"><circle cx="328" cy="78" r="9" /><text x="342" y="72">P₁</text></g>
+            <g class="hero-point"><circle cx="564" cy="332" r="9" /><text x="576" y="358">P₂</text></g>
+            <g class="formula-card" transform="translate(334 380)">
+              <rect width="248" height="54" rx="9" />
+              <text x="18" y="33">B(t) = Σ bᵢ Bᵢ,₂(t)</text>
+            </g>
+          </svg>
+          <div class="visual-caption">
+            <span><b>3</b> control points</span>
+            <span><b>2</b> polynomial degree</span>
+            <span><b>C∞</b> continuity</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lab-stats" aria-label="Lab overview">
+      <div class="shell stats-grid">
+        <div><strong>05</strong><span>learning stages</span></div>
+        <div><strong>Python + Bokeh</strong><span>readable demonstrations</span></div>
+        <div><strong>Short checks</strong><span>quizzes that reinforce ideas</span></div>
+      </div>
+    </section>
+
+    <section class="section how-it-works" aria-labelledby="how-title">
+      <div class="shell">
+        <div class="section-heading centered-heading">
+          <p class="section-kicker">A visual-first workflow</p>
+          <h2 id="how-title">Manipulate. Understand. Check.</h2>
+          <p>Each topic connects an interactive experiment to the mathematics and then gives you a quick way to test the idea.</p>
+        </div>
+        <div class="method-grid">
+          <article class="method-card">
+            <span class="method-number">01</span>
+            <div class="method-icon" aria-hidden="true">✣</div>
+            <h3>Manipulate</h3>
+            <p>Drag control points, vary parameters, and see geometric relationships respond immediately.</p>
+          </article>
+          <article class="method-card">
+            <span class="method-number">02</span>
+            <div class="method-icon" aria-hidden="true">ƒ</div>
+            <h3>Understand</h3>
+            <p>Connect each visual change to equations, algorithms, and practical CAD modelling decisions.</p>
+          </article>
+          <article class="method-card">
+            <span class="method-number">03</span>
+            <div class="method-icon" aria-hidden="true">✓</div>
+            <h3>Check</h3>
+            <p>Use short quizzes and prediction prompts to turn exploration into durable understanding.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section learning-section" id="learning-path" aria-labelledby="learning-title">
+      <div class="shell">
+        <div class="section-heading split-heading">
+          <div>
+            <p class="section-kicker">Structured progression</p>
+            <h2 id="learning-title">Your path through CAD geometry</h2>
+          </div>
+          <p>Start with coordinates and parametric motion, then build toward the curve and surface representations used by modern CAD systems.</p>
+        </div>
+
+        <div class="learning-path" role="list">
+          <article class="path-card path-card-active" role="listitem">
+            <div class="path-index">01</div>
+            <div class="path-content">
+              <span class="status status-ready">Start here</span>
+              <p class="path-label">Foundations</p>
+              <h3>Points &amp; parametric curves</h3>
+              <p>Read coordinates, manipulate points, and understand a curve as a position that changes with a parameter.</p>
+              <ul><li>Beginner</li><li>10–15 min</li><li>Interactive</li></ul>
+            </div>
+            <a class="path-action" href="#demo-preview" aria-label="Preview foundations with draggable points">Preview <span aria-hidden="true">→</span></a>
+          </article>
+
+          <article class="path-card" role="listitem">
+            <div class="path-index">02</div>
+            <div class="path-content">
+              <span class="status status-next">Coming next</span>
+              <p class="path-label">Curve construction</p>
+              <h3>Bézier curves</h3>
+              <p>Explore Bernstein basis functions, control polygons, and the geometric de Casteljau algorithm.</p>
+              <ul><li>Intermediate</li><li>20 min</li><li>Python demo</li></ul>
+            </div>
+            <span class="path-action path-action-muted">In development</span>
+          </article>
+
+          <article class="path-card" role="listitem">
+            <div class="path-index">03</div>
+            <div class="path-content">
+              <span class="status status-planned">Planned</span>
+              <p class="path-label">Local control</p>
+              <h3>B-Splines</h3>
+              <p>See how degree, basis functions, control points, and knot vectors work together.</p>
+              <ul><li>Intermediate</li><li>Basis explorer</li><li>Knot insertion</li></ul>
+            </div>
+            <span class="path-action path-action-muted">On the roadmap</span>
+          </article>
+
+          <article class="path-card" role="listitem">
+            <div class="path-index">04</div>
+            <div class="path-content">
+              <span class="status status-planned">Planned</span>
+              <p class="path-label">Rational geometry</p>
+              <h3>NURBS</h3>
+              <p>Use weights to shape rational splines and represent conic sections exactly.</p>
+              <ul><li>Advanced</li><li>Weight explorer</li><li>Conics</li></ul>
+            </div>
+            <span class="path-action path-action-muted">On the roadmap</span>
+          </article>
+
+          <article class="path-card" role="listitem">
+            <div class="path-index">05</div>
+            <div class="path-content">
+              <span class="status status-roadmap">Roadmap</span>
+              <p class="path-label">From curves to forms</p>
+              <h3>Surface modelling</h3>
+              <p>Extend curve ideas to tensor-product patches, continuity, and practical surface design.</p>
+              <ul><li>Advanced</li><li>Surface patches</li><li>Continuity</li></ul>
+            </div>
+            <span class="path-action path-action-muted">Future module</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section demo-section" id="demo-preview" aria-labelledby="demo-title">
+      <div class="shell demo-layout">
+        <div class="demo-copy">
+          <p class="section-kicker light-kicker">First experiment</p>
+          <h2 id="demo-title">Drag the control points</h2>
+          <p>Move any point and watch the control polygon and quadratic curve update. This lightweight preview introduces the interaction pattern that the full Python + Bokeh demonstrations will use.</p>
+          <div class="demo-notice"><span>Next build</span> Standalone Bokeh version with live coordinates and source code.</div>
+          <ul class="demo-features">
+            <li><span>01</span> Drag with a mouse or touch</li>
+            <li><span>02</span> Use arrow keys for precise movement</li>
+            <li><span>03</span> Observe global Bézier control</li>
+          </ul>
+        </div>
+
+        <div class="drag-demo" data-drag-demo>
+          <div class="demo-toolbar">
+            <div><span class="demo-dot"></span><strong>Quadratic Bézier preview</strong></div>
+            <output id="point-readout" data-point-readout aria-live="polite">Select a control point</output>
+          </div>
+          <svg viewBox="0 0 560 360" role="img" aria-labelledby="drag-title drag-description" data-drag-svg>
+            <title id="drag-title">Interactive quadratic Bézier curve</title>
+            <desc id="drag-description">Three keyboard and pointer draggable control points shape a quadratic Bézier curve.</desc>
+            <defs>
+              <pattern id="demo-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M40 0H0V40" fill="none" stroke="#d9e5ed" stroke-width="1" />
+              </pattern>
+            </defs>
+            <rect class="demo-canvas" width="560" height="360" rx="14" />
+            <rect width="560" height="360" rx="14" fill="url(#demo-grid)" />
+            <path class="demo-axis" d="M0 180H560M280 0V360" />
+            <polyline class="demo-control-polygon" points="96,278 274,70 464,260" data-control-polygon />
+            <path class="demo-bezier" d="M96 278Q274 70 464 260" data-curve-path />
+            <circle class="control-point point-start" cx="96" cy="278" r="11" data-control-point data-index="0" data-label="P0" tabindex="0" role="slider" aria-label="Control point P0" />
+            <circle class="control-point point-middle" cx="274" cy="70" r="11" data-control-point data-index="1" data-label="P1" tabindex="0" role="slider" aria-label="Control point P1" />
+            <circle class="control-point point-end" cx="464" cy="260" r="11" data-control-point data-index="2" data-label="P2" tabindex="0" role="slider" aria-label="Control point P2" />
+            <text class="point-label" x="72" y="308" data-point-label="0">P₀</text>
+            <text class="point-label" x="288" y="62" data-point-label="1">P₁</text>
+            <text class="point-label" x="478" y="287" data-point-label="2">P₂</text>
+          </svg>
+          <p class="demo-help">Tip: focus a point and use the arrow keys. Hold Shift for larger steps.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section quiz-section" id="quick-quiz" aria-labelledby="quiz-title">
+      <div class="shell quiz-layout">
+        <div class="quiz-intro">
+          <p class="section-kicker">Quick knowledge check</p>
+          <h2 id="quiz-title">Predict before you proceed.</h2>
+          <p>Short questions throughout the lab will help connect what you see to the underlying mathematics.</p>
+          <div class="quiz-progress" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        </div>
+
+        <form class="quiz-card" data-quiz-form>
+          <fieldset>
+            <legend><span>Question 01</span> When the middle control point of a quadratic Bézier curve moves, what changes?</legend>
+            <label class="quiz-option">
+              <input type="radio" name="bezier-question" value="local">
+              <span><b>A</b> Only a tiny local segment of the curve</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="bezier-question" value="global">
+              <span><b>B</b> The curve shape across its parameter range</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="bezier-question" value="degree">
+              <span><b>C</b> The polynomial degree of the curve</span>
+            </label>
+            <label class="quiz-option">
+              <input type="radio" name="bezier-question" value="knots">
+              <span><b>D</b> The knot vector</span>
+            </label>
+          </fieldset>
+          <div class="quiz-footer">
+            <button class="button button-dark" type="submit">Check answer</button>
+            <button class="text-button" type="button" data-quiz-reset hidden>Try again</button>
+          </div>
+          <p class="quiz-feedback" data-quiz-feedback role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="section python-section" id="python-lab" aria-labelledby="python-title">
+      <div class="shell python-layout">
+        <div class="code-window" aria-label="Python and Bokeh example">
+          <div class="code-toolbar"><span><i></i><i></i><i></i></span><code>draggable_points/app.py</code></div>
+          <pre><code><span class="code-keyword">from</span> bokeh.plotting <span class="code-keyword">import</span> figure
+<span class="code-keyword">from</span> bokeh.models <span class="code-keyword">import</span> PointDrawTool
+
+plot = figure(
+    title=<span class="code-string">"Draggable control points"</span>,
+    match_aspect=<span class="code-keyword">True</span>
+)
+
+renderer = plot.scatter(
+    x=<span class="code-string">"x"</span>, y=<span class="code-string">"y"</span>,
+    source=source, size=<span class="code-number">14</span>
+)
+
+plot.add_tools(PointDrawTool(
+    renderers=[renderer]
+))</code></pre>
+        </div>
+
+        <div class="python-copy">
+          <p class="section-kicker">Open the black box</p>
+          <h2 id="python-title">See the code behind the geometry.</h2>
+          <p>Every visual topic will pair the interactive result with readable Python, mathematical notes, and small tests so you can inspect how it works and adapt it.</p>
+          <div class="python-points">
+            <div><span>01</span><p><strong>Readable modules</strong>Core curve and surface algorithms live in a focused <code>cadmath</code> package.</p></div>
+            <div><span>02</span><p><strong>Reproducible demos</strong>Bokeh demonstrations are generated from versioned Python source.</p></div>
+            <div><span>03</span><p><strong>Static-friendly builds</strong>Standalone outputs work on GitHub Pages; server apps remain available for local study.</p></div>
+          </div>
+          <a class="button button-outline" href="https://github.com/muralipalla/cad-geometry-lab/tree/main/python/cadmath" data-repository-python-link>Browse the Python roadmap <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about" aria-labelledby="about-title">
+      <div class="shell about-panel">
+        <div>
+          <p class="section-kicker light-kicker">Built in the open</p>
+          <h2 id="about-title">A growing laboratory for geometric design.</h2>
+          <p>This first release establishes the learning path. The next milestone is the full Bokeh draggable-points demonstration, followed by Bézier construction and continuity.</p>
+        </div>
+        <a class="button button-light" href="https://github.com/muralipalla/cad-geometry-lab" data-repository-link>Follow the project on GitHub <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div>
+        <a class="brand footer-brand" href="#top">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 42 42"><path d="M7 31C14 9 28 8 35 29" /><path d="M7 31 20 10 35 29" /><circle cx="7" cy="31" r="2.4" /><circle cx="20" cy="10" r="2.4" /><circle cx="35" cy="29" r="2.4" /></svg>
+          </span>
+          <span><strong>CAD Geometry Lab</strong><small>Learn by exploring.</small></span>
+        </a>
+        <p>An educational project for understanding the mathematics and algorithms behind computer-aided design.</p>
+      </div>
+      <div class="footer-links">
+        <div><strong>Explore</strong><a href="#learning-path">Concepts</a><a href="#demo-preview">Demos</a><a href="#quick-quiz">Quizzes</a></div>
+        <div><strong>Project</strong><a href="#about">About</a><a href="https://github.com/muralipalla/cad-geometry-lab" data-repository-link>GitHub</a><a href="#python-lab">Python</a></div>
+      </div>
+    </div>
+    <div class="shell footer-bottom"><span>© <span data-current-year></span> CAD Geometry Lab</span><span>Designed for teaching, experimentation, and open learning.</span></div>
+  </footer>
+
+  <script src="assets/js/navigation.js" defer></script>
+  <script src="assets/js/utilities.js" defer></script>
+</body>
+</html>
